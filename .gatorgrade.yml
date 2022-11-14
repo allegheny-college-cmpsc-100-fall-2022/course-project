@@ -1,0 +1,60 @@
+# What's up docs/
+- docs/proposal.md:
+  - description: No TODO markers left in proposal.md
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+- docs/progress.md:
+  - description: No TODO markers left in proposal.md
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+- docs/report.md:
+  - description: No TODO markers left in proposal.md
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+- docs/proposal.md:
+  - description: proposal.md meets word count (500 words)
+    check: CountFileWords
+    options:
+      count: 500
+- docs/progress.md:
+  - description: progress.md meets word count (500 words)
+    check: CountFileWords
+    options:
+      count: 500
+- docs/report.md:
+  - description: report.md meets word count (500 words)
+    check: CountFileWords
+    options:
+      count: 500
+- docs/proposal.md:
+  - description: proposal.md responds to all questions
+    check: CountFileParagraphs
+    options:
+      count: 3
+- docs/progress.md:
+  - description: report.md responds to all questions
+    check: CountFileParagraphs
+    options:
+      count: 6
+- docs/report.md:
+  - description: report.md responds to all questions
+    check: CountFileParagraphs
+    options:
+      count: 6
+# Code cops
+- src/main.py:
+  - description: No TODO markers left in main.py
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true

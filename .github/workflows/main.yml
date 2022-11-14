@@ -1,0 +1,37 @@
+name: GatorGrader
+
+on:
+  push:
+    branches: [main]
+
+jobs: 
+  grade:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with: 
+        fetch-depth: '0'
+    - name: Branch protection
+      uses: term-world/arborist@test
+      if: always()
+    - name: Setup Python
+      if: always()
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10.6
+    - name: Set up grading environment
+      run: |
+        sudo apt-get update
+        sudo python -m pip install --upgrade pip
+        sudo python -m pip install gatorgrade --ignore-installed PyYAML
+      if: always()
+    - name: Grade repository
+      run: |
+        gatorgrade --config .gatorgrade.yml
+      if: always()
+      env:   
+        PIPENV_VENV_IN_PROJECT: 1
+        PIPENV_IGNORE_VIRTUALENVS: 1
+    env:
+      GITHUB_TOKEN: ${{ secrets.ARBORIST }}
